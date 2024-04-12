@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.22)
+project(net_test)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS)
+add_executable(${CMAKE_PROJECT_NAME}
+    main.cpp
+)
