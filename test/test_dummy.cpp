@@ -17,10 +17,14 @@ namespace
         virtual void TearDown()
         {
         }
-
-        TEST_F(dummy_test, dummy)
-        {
-            ASSERT_EQ(42, 42);
-        }
     };
+
+    /**
+     * @brief Dummy test
+     *
+     */
+    TEST_F(dummy_test, dummy)
+    {
+        ASSERT_EQ(42, 42);
+    }
 }
