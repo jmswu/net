@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include <unistd.h>
 // #include <sys/types.h>
 #include <sys/socket.h>
@@ -24,9 +25,14 @@ namespace net
                                 htons(ETH_P_ALL)); /* capture everything */
         }
 
-        auto value() const
+        /**
+         * @brief Return a socket ID
+         *
+         * @return std::optional<int> socket id
+         */
+        auto id() const -> std::optional<int>
         {
-            return socket_fd_;
+            return socket_fd_ == -1 ? std::nullopt : std::make_optional(socket_fd_);
         }
 
         ~socket_raw()
