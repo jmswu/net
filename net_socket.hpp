@@ -11,6 +11,9 @@
 
 namespace net
 {
+    /**
+     * @brief Wrap socket in class so it guaranteed close when out of scope
+     */
     class socket_raw
     {
     public:
@@ -19,6 +22,11 @@ namespace net
             socket_fd_ = socket(AF_PACKET,         /* Socket for network driver level */
                                 SOCK_RAW,          /* Raw socket, so we can capture frame from Ethernet */
                                 htons(ETH_P_ALL)); /* capture everything */
+        }
+
+        auto value() const
+        {
+            return socket_fd_;
         }
 
         ~socket_raw()
