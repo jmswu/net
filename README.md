@@ -8,9 +8,15 @@ mkdir build && cd build
 make -j && ./test
 ```
 
-# build
+# Build
 ```
 mkdir build && cd build
 make -j
+```
+
+# Static analysis
+Install CodeChecker following [link](https://codechecker.readthedocs.io/en/latest/#install-guide)
+```
+./run_static_analysis.sh
 ```
 
