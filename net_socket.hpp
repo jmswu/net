@@ -25,6 +25,12 @@ namespace net
                                 htons(ETH_P_ALL)); /* capture everything */
         }
 
+        /* socket can't be copied or moved */
+        socket_raw(const socket_raw &) = delete;
+        socket_raw(socket_raw &&) = delete;
+        socket_raw &operator=(const socket_raw &) = delete;
+        socket_raw &operator=(socket_raw &&) = delete;
+
         /**
          * @brief Return a socket ID
          *
