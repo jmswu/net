@@ -44,15 +44,15 @@ namespace net
          */
         ssize_t polling()
         {
-            struct sockaddr sockaddr
+            struct sockaddr sock_src
             {
             };
-            int saddr_len = sizeof(sockaddr);
+            int saddr_len = sizeof(sock_src);
             rx_len_ = recvfrom(socket_.value(),          /* socket fd */
                                buf_.data(),              /* pointer to buffer */
                                buf_.size(),              /* buffer size */
                                0,                        /* flags */
-                               &sockaddr,                /* socket address */
+                               &sock_src,                /* socket address */
                                (socklen_t *)&saddr_len); /* socket len */
             if (rx_len_ > 0)
             {
