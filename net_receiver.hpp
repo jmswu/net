@@ -38,8 +38,12 @@ namespace net
                                0,
                                &sockaddr,
                                (socklen_t *)&saddr_len);
-            std::printf("rx len: %lu\r\n", rx_len_);
             return rx_len_;
+        }
+
+        auto data() -> unsigned char *
+        {
+            return buf_.data();
         }
 
     private:
