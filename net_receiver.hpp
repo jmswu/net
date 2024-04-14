@@ -54,9 +54,9 @@ namespace net
         /**
          * @brief Received data length
          *
-         * @return std::ssize_t Data length
+         * @return ssize_t Data length
          */
-        auto len() const -> std::ssize_t
+        auto len() const -> ssize_t
         {
             return rx_len_;
         }
@@ -64,6 +64,6 @@ namespace net
     private:
         socket_raw_rx &socket_;
         std::array<unsigned char, BUF_LEN> buf_;
-        std::ssize_t rx_len_;
+        ssize_t rx_len_;
     };
 }
