@@ -54,7 +54,7 @@ namespace net
          *
          * @return unsigned char* Pointer to Rx buffer
          */
-        auto data() const -> unsigned char *
+        auto data() const -> const unsigned char *
         {
             return buf_.data();
         }
