@@ -1,9 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "net_socket.hpp"
-
-#include <array>
-#include <cstdint>
+#include "net_receiver.hpp"
 
 int main()
 {
@@ -16,21 +14,11 @@ int main()
         std::printf("socket open error: %i\n\r", socket_raw_rx.value());
     }
 
-    std::array<std::uint8_t, 65000> buffer{};
-    struct sockaddr saddr;
-    int saddr_len = sizeof(saddr);
-    const auto rx_len = recvfrom(socket_raw_rx.value().value(),
-                                 buffer.data(),
-                                 buffer.size(),
-                                 0,
-                                 &saddr, (socklen_t *)&saddr_len);
+    net::receiver receiver{socket_raw_rx};
 
-    if (rx_len < 0)
-    {
-        std::printf("rx error\r\n");
-    }
+    receiver.polling();
 
-    std::printf("rx len: %lu\r\n", rx_len);
+    // std::printf("rx len: %lu\r\n", rx_len);
 
     return EXIT_SUCCESS;
 }

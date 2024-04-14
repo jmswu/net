@@ -48,7 +48,7 @@ namespace net
          *
          * @return std::optional<int> socket id
          */
-        auto value() const -> std::optional<int>
+        int value()
         {
             return socket_fd_;
         }
