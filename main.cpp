@@ -3,6 +3,19 @@
 #include "net_socket.hpp"
 #include "net_receiver.hpp"
 
+void helper_print_rx_data(net::receiver_def &rx)
+{
+    if (rx.polling() > 0)
+    {
+        std::printf("rx data:\r\n");
+        for (int i = 0; i < rx.len(); i++)
+        {
+            std::printf("%02X ", rx.data()[i]);
+        }
+        std::printf("\r\n");
+    }
+}
+
 int main()
 {
     std::printf("Hello world\r\n");
@@ -15,15 +28,8 @@ int main()
         return EXIT_SUCCESS;
     }
 
-    net::receiver receiver{socket_raw_rx};
-    if (receiver.polling() > 0)
-    {
-        for (int i = 0; i < receiver.len(); i++)
-        {
-            std::printf("%02X ", receiver.data()[i]);
-        }
-        std::printf("\r\n");
-    }
+    net::receiver_def receiver{socket_raw_rx};
+    helper_print_rx_data(receiver);
 
     return EXIT_SUCCESS;
 }

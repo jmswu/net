@@ -86,4 +86,6 @@ namespace net
         struct sockaddr src_;
         int sockaddr_len_;
     };
+
+    using receiver_def = receiver<UINT16_MAX>;
 }
