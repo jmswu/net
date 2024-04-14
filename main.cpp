@@ -10,7 +10,16 @@ void helper_print_rx_data(net::receiver_def &rx)
         std::printf("rx data:\r\n");
         for (int i = 0; i < rx.len(); i++)
         {
-            std::printf("%02X ", rx.data()[i]);
+            std::printf("x%02X ", rx.data()[i]);
+        }
+        std::printf("\r\n");
+
+        const auto [src, len] = rx.src();
+        std::printf("sockaddr family: %i\r\n", src.sa_family);
+        std::printf("sockaddr data  :");
+        for (std::size_t i = 0; i < sizeof(src.sa_data); i++)
+        {
+            std::printf("x%02X ", src.sa_data[i]);
         }
         std::printf("\r\n");
     }
