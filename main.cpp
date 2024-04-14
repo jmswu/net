@@ -18,7 +18,5 @@ int main()
 
     receiver.polling();
 
-    // std::printf("rx len: %lu\r\n", rx_len);
-
     return EXIT_SUCCESS;
 }
