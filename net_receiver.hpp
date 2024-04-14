@@ -37,6 +37,11 @@ namespace net
         receiver &operator=(const receiver &) = delete;
         receiver &operator=(const receiver &&) = delete;
 
+        /**
+         * @brief Receiving raw data by polling
+         *
+         * @return ssize_t Received data length
+         */
         ssize_t polling()
         {
             struct sockaddr sockaddr
