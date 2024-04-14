@@ -7,7 +7,7 @@ void helper_print_rx_data(net::receiver_def &rx)
 {
     if (rx.polling() > 0)
     {
-        std::printf("rx data:\r\n");
+        std::printf("rx data [%li]:\r\n", rx.len());
         for (int i = 0; i < rx.len(); i++)
         {
             std::printf("x%02X ", rx.data()[i]);
