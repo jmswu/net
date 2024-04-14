@@ -21,7 +21,7 @@ namespace net
     class receiver
     {
     public:
-        receiver(socket_raw_rx &socket)
+        explicit receiver(socket_raw_rx &socket)
             : socket_{socket},
               buf_{},
               rx_len_{},
@@ -30,6 +30,12 @@ namespace net
         {
         }
         ~receiver() {}
+
+        /* delete copy and move ctors */
+        receiver(const receiver &) = delete;
+        receiver(receiver &&) = delete;
+        receiver &operator=(const receiver &) = delete;
+        receiver &operator=(const receiver &&) = delete;
 
         ssize_t polling()
         {
