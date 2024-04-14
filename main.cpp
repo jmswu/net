@@ -12,6 +12,7 @@ int main()
     if (socket_raw_rx.value() == -1)
     {
         std::printf("socket open error: %i\n\r", socket_raw_rx.value());
+        return EXIT_SUCCESS;
     }
 
     net::receiver receiver{socket_raw_rx};
