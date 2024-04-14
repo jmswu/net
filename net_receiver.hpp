@@ -21,7 +21,12 @@ namespace net
     class receiver
     {
     public:
-        receiver(socket_raw_rx &socket) : socket_{socket}, buf_{}, rx_len_{}
+        receiver(socket_raw_rx &socket)
+            : socket_{socket},
+              buf_{},
+              rx_len_{},
+              src_{},
+              sockaddr_len_{}
         {
         }
         ~receiver() {}
@@ -38,6 +43,9 @@ namespace net
                                0,                        /* flags */
                                &sockaddr,                /* socket address */
                                (socklen_t *)&saddr_len); /* socket len */
+            if (rx_len_ > 0)
+            {
+            }
             return rx_len_;
         }
 
@@ -61,9 +69,21 @@ namespace net
             return rx_len_;
         }
 
+        /**
+         * @brief Return the socket source address, and source address length
+         *
+         * @return std::pair<struct sockaddr, int> Socket source address and address length
+         */
+        auto src() const -> std::pair<struct sockaddr, int>
+        {
+            return std::make_pair(src_, sockaddr_len_);
+        }
+
     private:
         socket_raw_rx &socket_;
         std::array<unsigned char, BUF_LEN> buf_;
         ssize_t rx_len_;
+        struct sockaddr src_;
+        int sockaddr_len_;
     };
 }
