@@ -13,7 +13,8 @@
 namespace net
 {
     /**
-     * @brief Wrap socket in class so it guaranteed close when out of scope
+     * @brief Wrap socket in class so it guaranteed close when out of scope.
+     * This is a raw socket that receives everything
      */
     class socket_raw_rx
     {
