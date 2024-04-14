@@ -36,14 +36,14 @@ namespace net
          *
          * @return std::optional<int> socket id
          */
-        auto id() const -> std::optional<int>
+        auto value() const -> std::optional<int>
         {
-            return socket_fd_ == -1 ? std::nullopt : std::make_optional(socket_fd_);
+            return socket_fd_;
         }
 
         ~socket_raw_rx()
         {
-            if (socket_fd_ != 1)
+            if (socket_fd_ != -1)
             {
                 close(socket_fd_);
             }
