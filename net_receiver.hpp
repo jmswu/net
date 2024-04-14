@@ -41,14 +41,29 @@ namespace net
             return rx_len_;
         }
 
-        auto data() -> unsigned char *
+        /**
+         * @brief Return pointer to the Rx buffer
+         *
+         * @return unsigned char* Pointer to Rx buffer
+         */
+        auto data() const -> unsigned char *
         {
             return buf_.data();
+        }
+
+        /**
+         * @brief Received data length
+         *
+         * @return std::ssize_t Data length
+         */
+        auto len() const -> std::ssize_t
+        {
+            return rx_len_;
         }
 
     private:
         socket_raw_rx &socket_;
         std::array<unsigned char, BUF_LEN> buf_;
-        ssize_t rx_len_;
+        std::ssize_t rx_len_;
     };
 }
