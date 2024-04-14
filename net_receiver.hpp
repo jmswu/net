@@ -32,12 +32,12 @@ namespace net
             {
             };
             int saddr_len = sizeof(sockaddr);
-            rx_len_ = recvfrom(socket_.value(),
-                               buf_.data(),
-                               buf_.size(),
-                               0,
-                               &sockaddr,
-                               (socklen_t *)&saddr_len);
+            rx_len_ = recvfrom(socket_.value(),          /* socket fd */
+                               buf_.data(),              /* pointer to buffer */
+                               buf_.size(),              /* buffer size */
+                               0,                        /* flags */
+                               &sockaddr,                /* socket address */
+                               (socklen_t *)&saddr_len); /* socket len */
             return rx_len_;
         }
 
