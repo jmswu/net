@@ -16,8 +16,14 @@ int main()
     }
 
     net::receiver receiver{socket_raw_rx};
-
-    receiver.polling();
+    if (receiver.polling() > 0)
+    {
+        for (int i = 0; i < receiver.len(); i++)
+        {
+            std::printf("%02X ", receiver.data()[i]);
+        }
+        std::printf("\r\n");
+    }
 
     return EXIT_SUCCESS;
 }
