@@ -15,10 +15,10 @@ namespace net
     /**
      * @brief Wrap socket in class so it guaranteed close when out of scope
      */
-    class socket_raw
+    class socket_raw_rx
     {
     public:
-        socket_raw() : socket_fd_{}
+        socket_raw_rx() : socket_fd_{}
         {
             socket_fd_ = socket(AF_PACKET,         /* Socket for network driver level */
                                 SOCK_RAW,          /* Raw socket, so we can capture frame from Ethernet */
@@ -26,10 +26,10 @@ namespace net
         }
 
         /* socket can't be copied or moved */
-        socket_raw(const socket_raw &) = delete;
-        socket_raw(socket_raw &&) = delete;
-        socket_raw &operator=(const socket_raw &) = delete;
-        socket_raw &operator=(socket_raw &&) = delete;
+        socket_raw_rx(const socket_raw_rx &) = delete;
+        socket_raw_rx(socket_raw_rx &&) = delete;
+        socket_raw_rx &operator=(const socket_raw_rx &) = delete;
+        socket_raw_rx &operator=(socket_raw_rx &&) = delete;
 
         /**
          * @brief Return a socket ID
@@ -41,7 +41,7 @@ namespace net
             return socket_fd_ == -1 ? std::nullopt : std::make_optional(socket_fd_);
         }
 
-        ~socket_raw()
+        ~socket_raw_rx()
         {
             if (socket_fd_ != 1)
             {
